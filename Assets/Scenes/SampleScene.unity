@@ -529,6 +529,7 @@ GameObject:
   - component: {fileID: 634934831}
   - component: {fileID: 634934833}
   - component: {fileID: 634934834}
+  - component: {fileID: 634934835}
   m_Layer: 0
   m_Name: Arrow Yellow
   m_TagString: Untagged
@@ -642,6 +643,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1
+--- !u!114 &634934835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634934830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e840f1b975bcdbf48ae05331b5586c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBePressed: 0
 --- !u!1 &652793820
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +667,7 @@ GameObject:
   - component: {fileID: 652793821}
   - component: {fileID: 652793823}
   - component: {fileID: 652793824}
+  - component: {fileID: 652793825}
   m_Layer: 0
   m_Name: Arrow Red
   m_TagString: Untagged
@@ -766,6 +781,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1
+--- !u!114 &652793825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652793820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e840f1b975bcdbf48ae05331b5586c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBePressed: 0
 --- !u!1 &869426105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,6 +1733,7 @@ GameObject:
   - component: {fileID: 2069201996}
   - component: {fileID: 2069201998}
   - component: {fileID: 2069201999}
+  - component: {fileID: 2069202000}
   m_Layer: 0
   m_Name: Arrow Brown
   m_TagString: Untagged
@@ -1818,6 +1847,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1
+--- !u!114 &2069202000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069201995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e840f1b975bcdbf48ae05331b5586c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBePressed: 0
 --- !u!1 &2109240530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,6 +1871,7 @@ GameObject:
   - component: {fileID: 2109240531}
   - component: {fileID: 2109240533}
   - component: {fileID: 2109240534}
+  - component: {fileID: 2109240535}
   m_Layer: 0
   m_Name: Arrow Green
   m_TagString: Untagged
@@ -1942,6 +1985,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1
+--- !u!114 &2109240535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109240530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e840f1b975bcdbf48ae05331b5586c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBePressed: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
