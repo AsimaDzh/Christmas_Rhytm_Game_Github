@@ -656,6 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
+  keyToPress: 274
 --- !u!1 &652793820
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,6 +795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
+  keyToPress: 273
 --- !u!1 &869426105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,7 +1130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: b52e3d5233afc6241a953a68fa449a2d, type: 3}
   pressedImage: {fileID: 21300000, guid: e442f0de696f2f244acb118d31a4194b, type: 3}
-  keyToPress: 273
+  keyToPress: 274
 --- !u!61 &937762869
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1306,7 +1308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: a81346d5e634cb5488aaf5635cc229a0, type: 3}
   pressedImage: {fileID: 21300000, guid: 73be31b43671a48419b4262ad1d3a869, type: 3}
-  keyToPress: 274
+  keyToPress: 273
 --- !u!61 &974893549
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1860,6 +1862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
+  keyToPress: 276
 --- !u!1 &2109240530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,6 +2001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
+  keyToPress: 275
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

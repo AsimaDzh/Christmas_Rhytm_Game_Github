@@ -3,6 +3,7 @@ using UnityEngine;
 public class NoteObject : MonoBehaviour
 {
     public bool canBePressed;
+    public KeyCode keyToPress;
 
     void Start()
     {
@@ -11,7 +12,14 @@ public class NoteObject : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(keyToPress))
+        {
+            if (canBePressed)
+            {
+                Debug.Log("Hit");
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
