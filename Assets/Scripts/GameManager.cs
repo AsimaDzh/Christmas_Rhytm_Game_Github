@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
 
     private int _currentMulti = 1;
     private int _multipierTracker;
-    
-    public int[] multiThresholds;
+    [SerializeField] private int[] multiThresholds;
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI multiplierText;
@@ -63,5 +62,9 @@ public class GameManager : MonoBehaviour
     public void NoteMissed()
     {
         Debug.Log("Missed Note");
+        
+        _currentMulti = 1;
+        _multipierTracker = 0;
+        multiplierText.text = "x" + _currentMulti;
     }
 }

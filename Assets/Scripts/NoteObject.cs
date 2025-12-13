@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class NoteObject : MonoBehaviour
 {
-    public bool canBePressed;
+    private bool canBePressed;
+
     public KeyCode keyToPress;
 
 
