@@ -5,10 +5,6 @@ public class NoteObject : MonoBehaviour
     public bool canBePressed;
     public KeyCode keyToPress;
 
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -16,7 +12,7 @@ public class NoteObject : MonoBehaviour
         {
             if (canBePressed)
             {
-                Debug.Log("Hit");
+                GameManager.instance.NoteHit();
                 gameObject.SetActive(false);
             }
         }
@@ -30,7 +26,10 @@ public class NoteObject : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Activator")
+        if (other.tag == "Activator" && gameObject.activeSelf)
+        {
             canBePressed = false;
+            GameManager.instance.NoteMissed();
+        }
     }
 }
