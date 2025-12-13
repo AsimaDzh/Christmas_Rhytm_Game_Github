@@ -1,9 +1,15 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private int _currentScore;
     private int _scorPerNote = 100;
+    private int _currentMulti;
+    private int _multipierTracker;
+
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI multiplierText;
 
     public AudioSource theXmasMusic;
     public BeatScroller theBS;
@@ -36,6 +42,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Hit On Time");
 
         _currentScore += _scorPerNote;
+        scoreText.text = _currentScore.ToString();
     }
 
     public void NoteMissed()
