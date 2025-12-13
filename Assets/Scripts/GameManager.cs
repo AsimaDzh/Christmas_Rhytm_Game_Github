@@ -4,7 +4,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private int _currentScore;
-    private int _scorPerNote = 100;
+    private int _scorePerNote = 100;
+    private int _scorePerGoodNote = 125;
+    private int _scorePerPerfectNote = 150;
 
     private int _currentMulti = 1;
     private int _multipierTracker;
@@ -54,9 +56,28 @@ public class GameManager : MonoBehaviour
             }
         }
         
-        _currentScore += _scorPerNote * _currentMulti;
-        scoreText.text = _currentScore.ToString();
+        //_currentScore += _scorePerNote * _currentMulti;
+        //scoreText.text = _currentScore.ToString();
+
         multiplierText.text = "x" + _currentMulti;
+    }
+
+    public void NormalHit()
+    {
+        _currentScore += _scorePerNote * _currentMulti;
+        NoteHit();
+    }
+
+    public void GoodHit() 
+    {
+        _currentScore += _scorePerGoodNote * _currentMulti;
+        NoteHit();
+    }
+
+    public void PerfectHit()
+    {
+        _currentScore += _scorePerPerfectNote * _currentMulti;
+        NoteHit();
     }
 
     public void NoteMissed()
