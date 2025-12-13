@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private int _currentScore;
+    private int _scorPerNote = 100;
+
     public AudioSource theXmasMusic;
     public BeatScroller theBS;
     public bool startPlaying;
@@ -31,6 +34,8 @@ public class GameManager : MonoBehaviour
     public void NoteHit()
     {
         Debug.Log("Hit On Time");
+
+        _currentScore += _scorPerNote;
     }
 
     public void NoteMissed()
