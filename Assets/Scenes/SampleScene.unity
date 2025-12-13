@@ -1734,7 +1734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theXmasMusic: {fileID: 499334363}
-  theBS: {fileID: 0}
+  theBS: {fileID: 1862309963}
   startPlaying: 0
 --- !u!1 &1146878952
 GameObject:
@@ -1819,7 +1819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6952b53d8300c4d8b0a35d66721a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beatTempo: 120
+  beatTempo: 90
   hasStarted: 0
 --- !u!1 &2034002524
 GameObject:

@@ -15,6 +15,15 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+        if (!startPlaying)
+        {
+            if (Input.anyKeyDown)
+            {
+                startPlaying = true;
+                theBS.hasStarted = true;
+
+                theXmasMusic.Play();
+            }
+        }
     }
 }
