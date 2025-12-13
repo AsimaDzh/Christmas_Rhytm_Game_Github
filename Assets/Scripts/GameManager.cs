@@ -5,8 +5,11 @@ public class GameManager : MonoBehaviour
 {
     private int _currentScore;
     private int _scorPerNote = 100;
-    private int _currentMulti;
+
+    private int _currentMulti = 1;
     private int _multipierTracker;
+    
+    public int[] multiThresholds;
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI multiplierText;
@@ -41,8 +44,20 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Hit On Time");
 
-        _currentScore += _scorPerNote;
+        if (_currentMulti - 1 < multiThresholds.Length)
+        {
+            _multipierTracker++;
+
+            if (multiThresholds[_currentMulti - 1] <= _multipierTracker)
+            {
+                _multipierTracker = 0;
+                _currentMulti++;
+            }
+        }
+        
+        _currentScore += _scorPerNote * _currentMulti;
         scoreText.text = _currentScore.ToString();
+        multiplierText.text = "x" + _currentMulti;
     }
 
     public void NoteMissed()
