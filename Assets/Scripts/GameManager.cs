@@ -21,11 +21,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI multiplierText;
 
-    private float _totalNotes;
-    private float _normalHits;
-    private float _goodHits;
-    private float _perfectHits;
-    private float _missedHits;
+    private float 
+        _totalNotes, 
+        _normalHits, 
+        _goodHits, 
+        _perfectHits, 
+        _missedHits;
+
+    public GameObject resultScreen;
+    public TextMeshProUGUI 
+        missedHitText, 
+        normalHitText, 
+        goodHitText, 
+        perfectHitText, 
+        percentText, 
+        rankText, 
+        finalScoreText; 
 
 
     void Start()
@@ -45,6 +56,36 @@ public class GameManager : MonoBehaviour
                 theBS.hasStarted = true;
 
                 theXmasMusic.Play();
+            }
+        }
+        else
+        {
+            if (!theXmasMusic.isPlaying && !resultScreen.activeInHierarchy)
+            {
+                resultScreen.SetActive(true);
+
+                missedHitText.text = _missedHits.ToString();
+                normalHitText.text = _normalHits.ToString();
+                goodHitText.text = _goodHits.ToString();
+                perfectHitText.text = _perfectHits.ToString();
+
+                float percentHit = (_normalHits + _goodHits + _perfectHits) / _totalNotes * 100f;
+                percentText.text = percentHit.ToString("F1") + "%";
+
+                string rankVal = "F";
+                if (percentHit > 40f)
+                    rankVal = "D";
+                if (percentHit > 55f)
+                    rankVal = "C";
+                if (percentHit > 70f)
+                    rankVal = "B";
+                if (percentHit > 85f)
+                    rankVal = "A";
+                if (percentHit > 95f)
+                    rankVal = "S";
+                rankText.text = rankVal;
+
+                finalScoreText.text = _currentScore.ToString();
             }
         }
     }

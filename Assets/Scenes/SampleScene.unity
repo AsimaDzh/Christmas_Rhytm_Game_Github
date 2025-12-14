@@ -4398,6 +4398,14 @@ MonoBehaviour:
   multiThresholds: 040000000800000010000000
   scoreText: {fileID: 1664066865}
   multiplierText: {fileID: 1405317274}
+  resultScreen: {fileID: 2016771603}
+  missedHitText: {fileID: 1989404766}
+  normalHitText: {fileID: 967509774}
+  goodHitText: {fileID: 1974729243}
+  perfectHitText: {fileID: 1917963091}
+  percentText: {fileID: 1764324400}
+  rankText: {fileID: 1482275276}
+  finalScoreText: {fileID: 1315047061}
 --- !u!1 &1146878952
 GameObject:
   m_ObjectHideFlags: 0
