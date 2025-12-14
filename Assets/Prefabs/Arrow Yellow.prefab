@@ -124,7 +124,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1
+  m_Radius: 1.5
 --- !u!114 &3558545417618421336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,4 +137,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e840f1b975bcdbf48ae05331b5586c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyToPress: 274
+  keyToPress: 273
