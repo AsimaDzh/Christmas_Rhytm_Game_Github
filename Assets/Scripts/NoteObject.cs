@@ -5,7 +5,7 @@ public class NoteObject : MonoBehaviour
     private bool canBePressed;
 
     public KeyCode keyToPress;
-
+    public ParticleSystem hitEffect, goodEffect, perfectEffect, missEffect;
 
     void Update()
     {
@@ -19,16 +19,19 @@ public class NoteObject : MonoBehaviour
                 {
                     Debug.Log("Normal Hit");
                     GameManager.instance.NormalHit();
+                    Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
                 }
                 else if (transform.position.y > -3.7)
                 {
                     Debug.Log("Good Hit");
                     GameManager.instance.GoodHit();
+                    Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
                 }
                 else
                 {
                     Debug.Log("Perfect Hit");
                     GameManager.instance.PerfectHit();
+                    Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
                 } 
             }
         }
@@ -46,6 +49,7 @@ public class NoteObject : MonoBehaviour
         {
             canBePressed = false;
             GameManager.instance.NoteMissed();
+            Instantiate(missEffect, transform.position, missEffect.transform.rotation);
         }
     }
 }

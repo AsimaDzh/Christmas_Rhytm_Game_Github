@@ -138,3 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyToPress: 273
+  hitEffect: {fileID: 5711828399902062837, guid: f1bae8e072e38944f87f22db59dec1dd, type: 3}
+  goodEffect: {fileID: 6143446017725196863, guid: 4c0965c7a71228846a9c837caef82382, type: 3}
+  perfectEffect: {fileID: 5234522359929356480, guid: 794250ed6d364d648820776a92a7a9d3, type: 3}
+  missEffect: {fileID: 257798696066595252, guid: b6bc6964425871e469c527b5835e5a2e, type: 3}
