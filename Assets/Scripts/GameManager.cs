@@ -43,8 +43,6 @@ public class GameManager : MonoBehaviour
 
     public void NoteHit()
     {
-        Debug.Log("Hit On Time");
-
         if (_currentMulti - 1 < multiThresholds.Length)
         {
             _multipierTracker++;

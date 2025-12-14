@@ -15,12 +15,12 @@ public class NoteObject : MonoBehaviour
             {
                 gameObject.SetActive(false);
 
-                if (Mathf.Abs(transform.position.y) > -3)
+                if (transform.position.y > -3.3)
                 {
                     Debug.Log("Normal Hit");
                     GameManager.instance.NormalHit();
                 }
-                else if (Mathf.Abs(transform.position.y) > -4.1)
+                else if (transform.position.y > -3.7)
                 {
                     Debug.Log("Good Hit");
                     GameManager.instance.GoodHit();
