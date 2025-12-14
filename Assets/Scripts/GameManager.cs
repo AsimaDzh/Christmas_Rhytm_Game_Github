@@ -3,6 +3,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private bool _startPlaying;
+    [SerializeField] private AudioSource theXmasMusic;
+
+    public BeatScroller theBS;
+    public static GameManager instance;
+
     private int _currentScore;
     private int _scorePerNote = 100;
     private int _scorePerGoodNote = 125;
@@ -12,28 +18,30 @@ public class GameManager : MonoBehaviour
     private int _multipierTracker;
     [SerializeField] private int[] multiThresholds;
 
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI multiplierText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI multiplierText;
 
-    public AudioSource theXmasMusic;
-    public BeatScroller theBS;
-    public bool startPlaying;
-
-    public static GameManager instance;
+    private float _totalNotes;
+    private float _normalHits;
+    private float _goodHits;
+    private float _perfectHits;
+    private float _missedHits;
 
 
     void Start()
     {
         instance = this;
+
+        _totalNotes = FindObjectsOfType<NoteObject>().Length;
     }
 
     void Update()
     {
-        if (!startPlaying)
+        if (!_startPlaying)
         {
             if (Input.anyKeyDown)
             {
-                startPlaying = true;
+                _startPlaying = true;
                 theBS.hasStarted = true;
 
                 theXmasMusic.Play();
@@ -53,9 +61,6 @@ public class GameManager : MonoBehaviour
                 _currentMulti++;
             }
         }
-        
-        //_currentScore += _scorePerNote * _currentMulti;
-        //scoreText.text = _currentScore.ToString();
 
         multiplierText.text = "x" + _currentMulti;
     }
@@ -63,19 +68,28 @@ public class GameManager : MonoBehaviour
     public void NormalHit()
     {
         _currentScore += _scorePerNote * _currentMulti;
+        scoreText.text = _currentScore.ToString();
         NoteHit();
+
+        _normalHits++;
     }
 
     public void GoodHit() 
     {
         _currentScore += _scorePerGoodNote * _currentMulti;
+        scoreText.text = _currentScore.ToString();
         NoteHit();
+
+        _goodHits++;
     }
 
     public void PerfectHit()
     {
         _currentScore += _scorePerPerfectNote * _currentMulti;
+        scoreText.text = _currentScore.ToString();
         NoteHit();
+
+        _perfectHits++;
     }
 
     public void NoteMissed()
@@ -85,5 +99,7 @@ public class GameManager : MonoBehaviour
         _currentMulti = 1;
         _multipierTracker = 0;
         multiplierText.text = "x" + _currentMulti;
+
+        _missedHits++;
     }
 }
