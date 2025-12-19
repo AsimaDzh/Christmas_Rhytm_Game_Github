@@ -3,11 +3,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private bool _startPlaying;
-    [SerializeField] private AudioSource theXmasMusic;
-
-    public BeatScroller theBS;
     public static GameManager instance;
+
+    [Header("========== Music ==========")]
+    [SerializeField] private AudioSource theXmasMusic;
+    private bool _startPlaying;
+
+    [Header("========== Beat Scroller ==========")]
+    public BeatScroller theBS;
 
     private int _currentScore;
     private int _scorePerNote = 100;
@@ -16,10 +19,11 @@ public class GameManager : MonoBehaviour
 
     private int _currentMulti = 1;
     private int _multipierTracker;
-    [SerializeField] private int[] multiThresholds;
 
+    [Header("========== Multipliers & Scores ==========")]
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI multiplierText;
+    [SerializeField] private int[] multiThresholds;
 
     private float 
         _totalNotes, 
@@ -28,6 +32,7 @@ public class GameManager : MonoBehaviour
         _perfectHits, 
         _missedHits;
 
+    [Header("========== Results Screen ==========")]
     public GameObject resultScreen;
     public TextMeshProUGUI 
         missedHitText, 
@@ -74,17 +79,26 @@ public class GameManager : MonoBehaviour
 
                 string rankVal = "F";
                 if (percentHit > 40f)
+                {
                     rankVal = "D";
-                if (percentHit > 55f)
-                    rankVal = "C";
-                if (percentHit > 70f)
-                    rankVal = "B";
-                if (percentHit > 85f)
-                    rankVal = "A";
-                if (percentHit > 95f)
-                    rankVal = "S";
+                    if (percentHit > 55f)
+                    {
+                        rankVal = "C";
+                        if (percentHit > 70f)
+                        {
+                            rankVal = "B";
+                            if (percentHit > 85f)
+                            {
+                                rankVal = "A";
+                                if (percentHit > 95f)
+                                {
+                                    rankVal = "S";
+                                }
+                            }
+                        }
+                    }
+                }                
                 rankText.text = rankVal;
-
                 finalScoreText.text = _currentScore.ToString();
             }
         }
