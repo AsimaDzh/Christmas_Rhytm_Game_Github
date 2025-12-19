@@ -7536,6 +7536,16 @@ MonoBehaviour:
   percentText: {fileID: 1764324400}
   rankText: {fileID: 1482275276}
   finalScoreText: {fileID: 1315047061}
+  backgroundRenderer: {fileID: 1914271049}
+  rankBackgrounds:
+  - {fileID: 21300000, guid: 6eda2fd71128e6a4092205d6ed57b4ec, type: 3}
+  - {fileID: 21300000, guid: 66eb32c73d649cd4f9fbd5f3e032498f, type: 3}
+  - {fileID: 21300000, guid: 2b90e3c7527f12b459ab61df70c75928, type: 3}
+  - {fileID: 21300000, guid: 7749c9af80374474d81a825109302130, type: 3}
+  - {fileID: 21300000, guid: 0a42d22be67a37d4fa5bfc7470b1eb11, type: 3}
+  - {fileID: 21300000, guid: def4de0560faecd4391f9c8db825de08, type: 3}
+  - {fileID: 21300000, guid: 0e00e22c2302c4c429576e0e04ff4834, type: 3}
+  updateRankTextDuringPlay: 1
 --- !u!1 &1146878952
 GameObject:
   m_ObjectHideFlags: 0

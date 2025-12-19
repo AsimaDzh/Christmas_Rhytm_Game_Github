@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -43,12 +44,22 @@ public class GameManager : MonoBehaviour
         rankText, 
         finalScoreText; 
 
+    [Header("========== Background (optional) ==========")]
+    [SerializeField] private SpriteRenderer backgroundRenderer;
+    [SerializeField] private Sprite[] rankBackgrounds; //Порядок спрайтов: F, D, C, B, A, S, SS
+    [SerializeField] private bool updateRankTextDuringPlay = true;
+
+    private Rank _currentRank = Rank.F;
+
+    private enum Rank { F = 0, D = 1, C = 2, B = 3, A = 4, S = 5, SS = 6 }
 
     void Start()
     {
         instance = this;
 
         _totalNotes = FindObjectsOfType<NoteObject>().Length;
+        // Установим начальный фон один раз
+        UpdateBackgroundByRank(_currentRank);
     }
 
     void Update()
@@ -65,6 +76,25 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            // Пока играет музыка — обновляем текущий процент и ранг в реальном времени
+            if (theXmasMusic.isPlaying && _totalNotes > 0f)
+            {
+                float percentHit = (_normalHits * 0.5f + _goodHits * 0.8f + _perfectHits * 1f) / _totalNotes * 100f;
+                Rank newRank = GetRankFromPercent(percentHit);
+
+                if (newRank != _currentRank)
+                {
+                    _currentRank = newRank;
+                    UpdateBackgroundByRank(_currentRank);
+                }
+
+                if (updateRankTextDuringPlay && rankText != null)
+                {
+                    rankText.text = RankToString(_currentRank);
+                }
+            }
+
+            // Конец песни — показываем результирующий экран
             if (!theXmasMusic.isPlaying && !resultScreen.activeInHierarchy)
             {
                 resultScreen.SetActive(true);
@@ -105,7 +135,7 @@ public class GameManager : MonoBehaviour
                 rankText.text = rankVal;
                 finalScoreText.text = _currentScore.ToString();
             }
-        }
+        }   
     }
 
     public void NoteHit()
@@ -160,5 +190,43 @@ public class GameManager : MonoBehaviour
         multiplierText.text = "x" + _currentMulti;
 
         _missedHits++;
+    }
+
+    private Rank GetRankFromPercent(float percent)
+    {
+        if (percent == 100f) return Rank.SS;
+        if (percent > 95f) return Rank.S;
+        if (percent > 85f) return Rank.A;
+        if (percent > 70f) return Rank.B;
+        if (percent > 55f) return Rank.C;
+        if (percent > 40f) return Rank.D;
+        return Rank.F;
+    }
+
+    private string RankToString(Rank r)
+    {
+        switch (r)
+        {
+            case Rank.F: return "F";
+            case Rank.D: return "D";
+            case Rank.C: return "C";
+            case Rank.B: return "B";
+            case Rank.A: return "A";
+            case Rank.S: return "S";
+            case Rank.SS: return "SS";
+            default: return "F";
+        }
+    }
+
+    private void UpdateBackgroundByRank(Rank rank)
+    {
+        int idx = (int)rank;
+        // Спрайты назначаются в инспекторе в порядке F..SS
+        if (rankBackgrounds != null && idx >= 0 && idx < rankBackgrounds.Length && rankBackgrounds[idx] != null)
+        {
+            if (backgroundRenderer != null)
+                backgroundRenderer.sprite = rankBackgrounds[idx];
+            return;
+        }
     }
 }
