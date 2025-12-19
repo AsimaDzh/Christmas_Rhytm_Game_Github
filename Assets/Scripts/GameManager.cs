@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
                 goodHitText.text = _goodHits.ToString();
                 perfectHitText.text = _perfectHits.ToString();
 
-                float percentHit = (_normalHits + _goodHits + _perfectHits) / _totalNotes * 100f;
+                float percentHit = (_normalHits * 0.5f + _goodHits * 0.8f + _perfectHits * 1f) / _totalNotes * 100f;
                 percentText.text = percentHit.ToString("F1") + "%";
 
                 string rankVal = "F";
@@ -93,6 +93,10 @@ public class GameManager : MonoBehaviour
                                 if (percentHit > 95f)
                                 {
                                     rankVal = "S";
+                                    if (percentHit == 100f)
+                                    {
+                                        rankVal = "SSSSSSSSS++++!!!";
+                                    }
                                 }
                             }
                         }
