@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     [Header("========== Music ==========")]
     [SerializeField] private AudioSource theXmasMusic;
+    [SerializeField] private AudioSource resultSound;
     private bool _startPlaying;
 
     [Header("========== Beat Scroller ==========")]
@@ -98,6 +99,7 @@ public class GameManager : MonoBehaviour
             if (!theXmasMusic.isPlaying && !resultScreen.activeInHierarchy)
             {
                 resultScreen.SetActive(true);
+                resultSound.Play();
 
                 missedHitText.text = _missedHits.ToString();
                 normalHitText.text = _normalHits.ToString();
