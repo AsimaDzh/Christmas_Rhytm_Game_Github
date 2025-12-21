@@ -48,5 +48,8 @@ TagManager:
   - name: Particles
     uniqueID: 1160992553
     locked: 0
+  - name: Camera
+    uniqueID: 1981449715
+    locked: 0
   m_RenderingLayers:
   - Default
