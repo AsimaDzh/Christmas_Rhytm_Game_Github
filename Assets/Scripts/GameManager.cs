@@ -1,6 +1,17 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+
+public enum Rank 
+{ 
+    F = 0, 
+    D = 1, 
+    C = 2, 
+    B = 3, 
+    A = 4, 
+    S = 5, 
+    SS = 6 
+}
+
 
 public class GameManager : MonoBehaviour
 {
@@ -47,21 +58,21 @@ public class GameManager : MonoBehaviour
 
     [Header("========== Background (optional) ==========")]
     [SerializeField] private SpriteRenderer backgroundRenderer;
-    [SerializeField] private Sprite[] rankBackgrounds; //Порядок спрайтов: F, D, C, B, A, S, SS
+    [SerializeField] private Sprite[] rankBackgrounds; //Order of sprites: F, D, C, B, A, S, SS
     [SerializeField] private bool updateRankTextDuringPlay = true;
 
     private Rank _currentRank = Rank.F;
 
-    private enum Rank { F = 0, D = 1, C = 2, B = 3, A = 4, S = 5, SS = 6 }
 
     void Start()
     {
         instance = this;
 
         _totalNotes = FindObjectsOfType<NoteObject>().Length;
-        // Установим начальный фон один раз
+        // First background update to set the initial rank background (F)
         UpdateBackgroundByRank(_currentRank);
     }
+
 
     void Update()
     {
@@ -77,7 +88,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // Пока играет музыка — обновляем текущий процент и ранг в реальном времени
+            // While the music is playing, update the rank based on the current hit percentage
             if (theXmasMusic.isPlaying && _totalNotes > 0f)
             {
                 float percentHit = (_normalHits * 0.5f + _goodHits * 0.8f + _perfectHits * 1f) / _totalNotes * 100f;
@@ -90,12 +101,10 @@ public class GameManager : MonoBehaviour
                 }
 
                 if (updateRankTextDuringPlay && rankText != null)
-                {
                     rankText.text = RankToString(_currentRank);
-                }
             }
 
-            // Конец песни — показываем результирующий экран
+            // When the music stops, show the results screen with final stats
             if (!theXmasMusic.isPlaying && !resultScreen.activeInHierarchy)
             {
                 resultScreen.SetActive(true);
@@ -110,35 +119,38 @@ public class GameManager : MonoBehaviour
                 percentText.text = percentHit.ToString("F1") + "%";
 
                 string rankVal = "F";
-                if (percentHit > 40f)
+                switch (percentHit)
                 {
-                    rankVal = "D";
-                    if (percentHit > 55f)
-                    {
+                    case 100f:
+                        rankVal = "SS";
+                        break;
+
+                    case > 95f:
+                        rankVal = "S";
+                        break;
+
+                    case > 85f:
+                        rankVal = "A";
+                        break;
+
+                    case > 70f:
+                        rankVal = "B";
+                        break;
+
+                    case > 55f:
                         rankVal = "C";
-                        if (percentHit > 70f)
-                        {
-                            rankVal = "B";
-                            if (percentHit > 85f)
-                            {
-                                rankVal = "A";
-                                if (percentHit > 95f)
-                                {
-                                    rankVal = "S";
-                                    if (percentHit == 100f)
-                                    {
-                                        rankVal = "SSSSSSSSS++++!!!";
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }                
+                        break;
+
+                    case > 40f:
+                        rankVal = "D";
+                        break;
+                }
                 rankText.text = rankVal;
                 finalScoreText.text = _currentScore.ToString();
             }
         }   
     }
+
 
     public void NoteHit()
     {
@@ -156,6 +168,7 @@ public class GameManager : MonoBehaviour
         multiplierText.text = "x" + _currentMulti;
     }
 
+
     public void NormalHit()
     {
         _currentScore += _scorePerNote * _currentMulti;
@@ -164,6 +177,7 @@ public class GameManager : MonoBehaviour
 
         _normalHits++;
     }
+
 
     public void GoodHit() 
     {
@@ -174,6 +188,7 @@ public class GameManager : MonoBehaviour
         _goodHits++;
     }
 
+
     public void PerfectHit()
     {
         _currentScore += _scorePerPerfectNote * _currentMulti;
@@ -183,16 +198,16 @@ public class GameManager : MonoBehaviour
         _perfectHits++;
     }
 
+
     public void NoteMissed()
     {
-        Debug.Log("Missed Note");
-        
         _currentMulti = 1;
         _multipierTracker = 0;
         multiplierText.text = "x" + _currentMulti;
 
         _missedHits++;
     }
+
 
     private Rank GetRankFromPercent(float percent)
     {
@@ -204,6 +219,7 @@ public class GameManager : MonoBehaviour
         if (percent > 40f) return Rank.D;
         return Rank.F;
     }
+
 
     private string RankToString(Rank r)
     {
@@ -220,10 +236,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     private void UpdateBackgroundByRank(Rank rank)
     {
         int idx = (int)rank;
-        // Спрайты назначаются в инспекторе в порядке F..SS
         if (rankBackgrounds != null && idx >= 0 && idx < rankBackgrounds.Length && rankBackgrounds[idx] != null)
         {
             if (backgroundRenderer != null)

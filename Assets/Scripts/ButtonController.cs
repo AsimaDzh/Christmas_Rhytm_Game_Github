@@ -19,13 +19,9 @@ public class ButtonController : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(keyToPress))
-        {
             _spriteRen.sprite = pressedImage;
-        }
 
         if (Input.GetKeyUp(keyToPress))
-        {
             _spriteRen.sprite = defaultImage;
-        }
     }
 }
